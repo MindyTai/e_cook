@@ -1,0 +1,20 @@
+<h1>食譜列表</h1>
+
+<%= link_to "新增食譜", new_recipe_path %>
+
+<ul class="home-list">
+  <% @recipes.each do |recipe| %>
+    <%
+=begin%>
+ <li><%= link_to recipe.title, recipe_path(recipe.id) %></li>
+     <li><%= link_to recipe.title, recipe_path(recipe) %></li> 
+<%
+=end%>
+      <li>
+        <%= link_to recipe.title, recipe %>
+        <%= link_to "修改", edit_recipe_path(recipe), method: 'get' %>
+        <%= link_to "刪除", recipe_path(recipe), method: 'delete', data:{confirm: '確定嗎'} %>
+      </li>
+  <%end%>
+</ul>
+
