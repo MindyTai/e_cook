@@ -1,20 +1,27 @@
 <h1>食譜列表</h1>
 
-<%= link_to "新增食譜", new_recipe_path %>
+<%= link_to "新增食譜", new_recipe_path, class: 'button is-danger' %>
 
-<ul class="home-list">
-  <% @recipes.each do |recipe| %>
-    <%
+<%
 =begin%>
- <li><%= link_to recipe.title, recipe_path(recipe.id) %></li>
-     <li><%= link_to recipe.title, recipe_path(recipe) %></li> 
+ <% @recipes.each do |recipe| %>
+ <ul class="home-list"> 
+  <li>
+    <%= link_to recipe.title, recipe %>
+    <%= link_to "修改", edit_recipe_path(recipe), method: 'get' %>
+    <%= link_to "刪除", recipe_path(recipe), method: 'delete', data:{confirm: '確定嗎'} %>
+  </li> 
+ </ul> 
+<%end%> 
 <%
 =end%>
-      <li>
-        <%= link_to recipe.title, recipe %>
-        <%= link_to "修改", edit_recipe_path(recipe), method: 'get' %>
-        <%= link_to "刪除", recipe_path(recipe), method: 'delete', data:{confirm: '確定嗎'} %>
-      </li>
-  <%end%>
-</ul>
+<div class="columns is-multiline">
+ <% @recipes.each do |recipe| %>
+<div class="column is-3">
+  <%= render :partial =>'recipe', :locals => { :recipe => recipe }%>
+</div>
+ <%end%>
+ </div>
+
+
 
