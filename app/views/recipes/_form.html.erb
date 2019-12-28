@@ -17,6 +17,11 @@
 <%end%>
 
 <%= form_for( recipe ) do |f| %>
+  <%= image_tag @recipe.photo if @recipe.photo.attached?%>
+  <div class="field">
+    <%= f.label :photo,'照片' %>
+    <%= f.file_field (:photo) %>
+  </div>
   <div class="field">
     <%= f.label :title,'標題' %>
     <%= f.text_field (:title) %>

@@ -50,7 +50,7 @@ class RecipesController < ApplicationController
 
   private
     def clean_params
-      params.require(:recipe).permit(:title, :description)
+      params.require(:recipe).permit(:title, :description, :photo)
     end
 
     def find_recipe
